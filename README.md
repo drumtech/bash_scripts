@@ -15,3 +15,18 @@ And one little notification. Interval of right time not quite right, because if 
 Time format:
 - first two digit is hours in 24 format
 - second two digit(minutes) can't be more than 59
+
+# vertuhai
+This script watch for your worker and restart it if the condition is triggered
+
+*How can you check that it works?*
+1. In first window you can run simple script from this repository with name random_string.sh this script generates random strings in logs/your_app_worker.log
+2. In second window you can run script from this repository with name vertuhai.sh (but change the main command which start supervisor restart to a simple one, for example ls -la)
+3. And finally do this in third window
+```
+echo BrokenPipeError: bla bla bla 123 >> logs/your_app_worker.log
+
+```
+
+And you'll see result in the second window. The script will work in any line where it finds BrokenPipeError.
+And of course, don't forget to change your paths that match your system parameters.
